@@ -4,8 +4,8 @@
 # you must enetr the path of the OUTCAR file, the nuber of atoms, and the file name of the temp file you want to use
 
 path_to_file='chiralDNTT/OUTCAR'
-filename=temp2
 n_atoms=192
+filename=temp2
 
 grep 'total drift' -B $(( $n_atoms+3 )) $path_to_file  | tail -n $(( $n_atoms+2 ))  > temp
 
