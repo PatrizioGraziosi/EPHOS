@@ -7,6 +7,8 @@ path_to_file='chiralDNTT/OUTCAR'
 n_atoms=192
 filename=temp2
 
+
+
 grep 'total drift' -B $(( $n_atoms+3 )) $path_to_file  | tail -n $(( $n_atoms+2 ))  > temp
 
 awk 'NR < "'"$n_atoms"'" {print $4; $5; $6} ' temp > $filename
