@@ -25,3 +25,7 @@ for line in $(cat $filename) ;  do
      fi
 
 done
+
+echo "Maximum absolute value: $max"
+
+grep -n "$max" temp
