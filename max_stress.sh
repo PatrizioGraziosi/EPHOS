@@ -11,7 +11,10 @@ filename=temp2
 
 grep 'total drift' -B $(( $n_atoms+3 )) $path_to_file  | tail -n $(( $n_atoms+2 ))  > temp
 
-awk 'NR < "'"$n_atoms"'" {print $4; $5; $6} ' temp > $filename
+rm $filename
+awk 'NR <= '"$n_atoms"' {print $4} ' temp >> $filename
+awk 'NR <= '"$n_atoms"' {print $5} ' temp >> $filename
+awk 'NR <= '"$n_atoms"' {print $6} ' temp >> $filename
 
 
 max=0
