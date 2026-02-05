@@ -1,0 +1,93 @@
+M1=9
+M2=99
+M3=440
+
+
+mkdir pseudo_inter
+
+for i in $(seq 1 $M1)
+do
+ mkdir "pseudo_inter/mod-00${i}"
+ cp "MPOSCAR-00${i}" "pseudo_inter/mod-00${i}"/POSCAR
+ cp INCAR_mod "pseudo_inter/mod-00${i}"/INCAR
+ cp KPOINTS "pseudo_inter/mod-00${i}"/KPOINTS
+ cp POTCAR "pseudo_inter/mod-00${i}"/POTCAR
+
+ cp myjob6_mod.sh "pseudo_inter/mod-00${i}"/myjob6_mod.sh
+done
+
+
+for i in $(seq 10 $M2)
+do
+ mkdir "pseudo_inter/mod-0${i}"
+ cp "MPOSCAR-0${i}" "pseudo_inter/mod-0${i}"/POSCAR
+ cp INCAR_mod "pseudo_inter/mod-0${i}"/INCAR
+ cp KPOINTS "pseudo_inter/mod-0${i}"/KPOINTS
+ cp POTCAR "pseudo_inter/mod-0${i}"/POTCAR
+
+ cp myjob6_mod.sh "pseudo_inter/mod-0${i}"/myjob6_mod.sh
+done
+
+
+for i in $(seq 100 $M3)
+do
+ mkdir "pseudo_inter/mod-${i}"
+ cp "MPOSCAR-${i}" "pseudo_inter/mod-${i}"/POSCAR
+ cp INCAR_mod "pseudo_inter/mod-${i}"/INCAR
+ cp KPOINTS "pseudo_inter/mod-${i}"/KPOINTS
+ cp POTCAR "pseudo_inter/mod-${i}"/POTCAR
+
+ cp myjob6_mod.sh "pseudo_inter/mod-${i}"/myjob6_mod.sh
+
+done
+
+
+
+mkdir "pseudo_inter/mod-all"
+
+cp "MPOSCAR" "pseudo_inter/mod-all"/POSCAR
+cp INCAR_mod "pseudo_inter/mod-all"/INCAR
+cp KPOINTS "pseudo_inter/mod-all"/KPOINTS
+cp POTCAR "pseudo_inter/mod-all"/POTCAR
+cp myjob6_mod.sh "pseudo_inter/mod-all"/myjob6_mod.sh
+
+
+
+ mkdir pseudo_inter/mod-orig
+
+ cp INCAR_mod "pseudo_inter/mod-orig"/INCAR
+ cp KPOINTS "pseudo_inter/mod-orig"/KPOINTS
+ cp POTCAR "pseudo_inter/mod-orig"/
+ cp MPOSCAR-orig "pseudo_inter/mod-orig"/POSCAR
+ cp myjob6_mod.sh "pseudo_inter/mod-orig"/myjob6_mod.sh
+
+
+
+for i in $(seq 1 $M1)
+do
+ cd pseudo_inter/mod-00${i}
+ sbatch myjob6_mod.sh
+ cd ../..
+done
+
+for i in $(seq 10 $M2)
+do
+ cd pseudo_inter/mod-0${i}
+ sbatch myjob6_mod.sh
+ cd ../..
+done
+
+for i in $(seq 100 $M3)
+do
+ cd pseudo_inter/mod-${i}
+ sbatch myjob6_mod.sh
+ cd ../..
+done
+
+cd pseudo_inter/mod-all
+ sbatch myjob6_mod.sh
+cd ../..
+
+cd pseudo_inter/mod-orig
+ sbatch myjob6_mod.sh
+cd ../..
