@@ -58,6 +58,7 @@ cp myjob6_mod.sh "pseudo_inter/mod-all"/myjob6_mod.sh
  mkdir pseudo_inter/mod-orig
 
  cp INCAR_mod "pseudo_inter/mod-orig"/INCAR
+ cp INCAR_mod_nscf "pseudo_inter/mod-${i}"
  cp KPOINTS "pseudo_inter/mod-orig"/KPOINTS
  cp POTCAR "pseudo_inter/mod-orig"/
  cp MPOSCAR-orig "pseudo_inter/mod-orig"/POSCAR
