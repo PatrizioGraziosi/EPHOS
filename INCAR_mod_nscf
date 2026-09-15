@@ -1,0 +1,41 @@
+SYSTEM = Phonons 
+
+# Electronic degrees                                                                                                   
+ENCUT = 1000
+LREAL = .FALSE.
+PREC  =  Accurate                # 
+IALGO  = 38                    #
+
+# Convergence criteria
+EDIFF = 1E-8
+
+#
+IBRION=-1; ISIF=0; 
+ISMEAR = 0 ; SIGMA = 0.05
+
+#LSORBIT = .TRUE.
+#GGA_COMPAT = .FALSE.
+
+#MAGMOM = 348*0.0
+
+#SAXIS=  -0.3119         0    0.9501
+#BEXT = 0 0 0 ! 0.000012
+
+
+
+#LEPSILON=.TRUE. 
+
+#parallelisation
+LPLANE = .TRUE.
+NSIM = 1
+NCORE = 48 ! total # of cpu / NSIM 
+KPAR = 1 ! # of nodes
+
+#vdW-D3BJ correction 
+IVDW=12
+
+#
+ISTART = 1
+!LCHARG = .FALSE.
+LWAVE  = .TRUE.
+ICHARG = 11
